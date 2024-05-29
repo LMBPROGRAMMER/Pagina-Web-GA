@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>login</title>
 </head>
 <style>
   body {
@@ -107,26 +107,31 @@ input[type="submit"] {
 }
 
 </style>
+</head>
 <body>
     <div class="formulario">
-      <h1>Inicio de sesión</h1>
-      <form method="post">
-        {% csrf_token %}
-        <div class="username">
-          <input type="text" required>
-          <label>Nombre de usuario</label>
-        </div>
-        <div class="contraseña">
-          <input type="password" required>
-          <label>Contraseña</label>
-        </div>
-        <div class="recordarr">¿Olvidaste la Contraseña?</div>
-        <input type="submit" value="Iniciar">
-        <div class="registrarse">
-          Quiero hacer el <a href="{% url 'registro' %}">Registro</a>
-        </div>
-      </form>
+        <h1>Inicio de sesión</h1>
+        <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <div class="username">
+                <input type="text" name="username" required>
+                <label>Nombre de usuario</label>
+            </div>
+            <div class="contraseña">
+                <input type="password" name="password" required>
+                <label>Contraseña</label>
+            </div>
+            <div class="recordarr">¿Olvidaste la Contraseña?</div>
+            <input type="submit" value="Iniciar sesión">
+            <div class="registrarse">
+                Quiero hacer el <a href="{% url 'registro' %}">Registro</a>
+            </div>
+        </form>
     </div> 
+    <script src="js/validador_login.js" type="text/javascript"></script>
+</body>
+</html>
+
     {% block content %}
     {% endblock %}
     

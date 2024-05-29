@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 
 
 def index (request):
@@ -13,9 +16,20 @@ def index (request):
 
 def registro(request):
     return render(request,'registro.html')
-
+@login_required
 def home(request):
-    return render(request,'home.html')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            error_message = "Credenciales inválidas. Inténtelo de nuevo."
+            return render(request, 'index.html', {'error_message': error_message})
+    else:
+        return render(request, 'index.html')
 
 def recibir_datos(request):
     if request.method == 'POST':

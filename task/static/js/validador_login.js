@@ -3,9 +3,8 @@
 $(document).ready(function () {
     $("#formulario_ingresar").validate({
         rules: {
-            email: {
+            nombre: {
                 required: true,
-                email: true,
             },
             password: {
                 required: true,
@@ -14,9 +13,10 @@ $(document).ready(function () {
         
         }, // --> Fin de reglas
         messages: {
-            email: {
-                required: "El email es un campo requerido",
-                email: "El email no cumple el formato de un correo",
+            
+            nombre: {
+                required: "El Nombre es un campo requerido",
+                nombre: "El Nombre no es válido",
             },
             
             password: {
