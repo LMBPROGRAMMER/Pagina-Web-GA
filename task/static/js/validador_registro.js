@@ -40,16 +40,11 @@ $(document).ready(function () {
     // html-ingresar
     $("#formulario1").validate({
         rules: {
-            rut: {
-                required: true,
-                rutChileno: true
-            },
+            
             nombre: {
                 required: true,
             },
-            apellido: {
-                required: true,
-            },
+        
             email: {
                 required: true,
                 email: true,
@@ -59,25 +54,15 @@ $(document).ready(function () {
                 required: true,
                 minlength: 5,
             },
-            password2: {
-                required: true,
-                equalTo: password,
-            },
-        
+            
         }, // --> Fin de reglas
         messages: {
-            rut: {
-                required: "El rut es un campo obligatorio",
-                rutChileno: "El formato del rut no es válido"
-            },
+            
             nombre: {
                 required: "El Nombre es un campo requerido",
                 nombre: "El Nombre no es válido",
             },
-            apellido: {
-                required: "El Apellido es un campo requerido",
-                apellido: "El Apellido no es válido",
-            },
+            
             email: {
                 required: "El email es un campo requerido",
                 email: "El email no cumple el formato de un correo",
@@ -87,10 +72,7 @@ $(document).ready(function () {
                 required: "La contraseña es una campo obligatorio",
                 minlength: "Mínimo 5 caracteres",
             },
-            password2: {
-                required: "Repita la contraseña anterior",
-                equalTo: "Debe ser igual al campo contraseña",
-            },
+            
         },
     });
 });

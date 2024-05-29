@@ -1,100 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+</head>
 <body>
-      
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(120deg, #21618c, #6c3483);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-            <style>
-            body {
-                            margin: 0;
-                            padding: 0;
-                            font-family: 'Times New Roman', Times, serif;
-                            background: linear-gradient(120deg, #21618c, #6c3483);
-                            height: 100vh;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center; }
+        .formulario_registro {
+            width: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
 
-                .formulario_registro{
-                                width: 400px;
-                                background:white;
-                                border-radius: 10px; /* Corregido de '10ox' a '10px' */
-                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                                padding: 20px;
-                }
-                .formulario_registro h1 {
-                                text-align: center;
-                                padding: 0 0 20px 0;
-                                border-bottom: 1px solid silver;
-                            }
-            .formulario_registro form {
-                                        padding: 0 40px;
-                                        box-sizing: border-box;
-                                    }
-            .usuariro_rut, .usuariro_rut ,.nombre_usuario,.apellido,.email_usuario,.contraseña_usuario,.repetir_contraseña {
-                    position: relative;
-                    border-bottom: 2px solid #adadad;
-                    margin: 30px 0;
-                }
-                </style>
-            
-            <!-- formulario de cliente -->
-            <div class="formulario_registro">
-                <h1>Registro de cliente</h1>
-            <form method="POST" id="formulario1" action="recibir_datos">
-                <div class="row" id="datos">
-                    <div class="col-sm-6" >
+        .formulario_registro h1 {
+            text-align: center;
+            padding: 0 0 20px 0;
+            border-bottom: 1px solid silver;
+        }
 
-                        <div class="usuario_rut">
-                            <br>
-                            <label for="rut">Rut</label>
-                            <input type="text" id="rut" name="rut" placeholder="Ingrese su rut aquí" class="form-control"
-                                value="" />
-                        </div>
+        .formulario_registro form {
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
 
-                        <div class="nombre_usuario">
-                            <br>
-                            <label for="nombre">Nombre </label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Ingrese su Nombre aquí"
-                                class="form-control" value="" />
-                        </div>
+        .nombre_usuario, .email_usuario, .contraseña_usuario {
+            position: relative;
+            border-bottom: 2px solid #adadad;
+            margin: 30px 0;
+        }
+    </style>
 
-                        <div class="apellido">
-                            <br>
-                            <label for="apellido">Apellido</label>
-                            <input type="text" id="apellido" name="apellido" placeholder="Ingrese su Apellido aquí"
-                                class="form-control" value="" />
-                        </div>
-
-                        <div class="email_usuario">
-                            <br>
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control"
-                                placeholder="Ingrese su email aquí" value="" />
-                        </div>
-                        
-                        <div class="contraseña_usuario">
-                            <br>
-                            <label for="password">Contraseña</label>
-                            <input type="password" id="password" name="password" class="form-control"
-                                placeholder="Ingresar contraseña de al menos 5 caracteres" value="" />
-                        </div>
-
-                        <div class="repetir_contraseña">
-                            <br>
-                            <label for="password2">Repetir la Contraseña</label>
-                            <input type="password" id="password2" name="password2" class="form-control"
-                                placeholder="la contraseña tiene que ser igual a la anterior" value="" />
-                        </div>
-
-                        
-                    </div>      
-                </div>
-                <div class="row">
-                    <div class="col text-center">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                        <button type="reset" class="btn btn-primary">Limpiar</button>
+    <div class="formulario_registro">
+        <h1>Registro de cliente</h1>
+        <form method="POST" action="{% url 'recibir_datos' %}">
+            {% csrf_token %}
+            <div class="row" id="datos">
+                <div class="col-sm-6">
+                    <div class="nombre_usuario">
+                        <br>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ingrese su Nombre aquí" class="form-control" required>
                     </div>
+
+                    <div class="email_usuario">
+                        <br>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Ingrese su email aquí" required>
+                    </div>
+                    
+                    <div class="contraseña_usuario">
+                        <br>
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Ingresar contraseña de al menos 5 caracteres" required>
+                    </div>
+                </div>      
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
-            </form>
-        </div> 
-        <script src="{ % static 'js/validador_registro.js' % }"></script>   
-    </body>   
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
     

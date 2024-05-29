@@ -22,6 +22,8 @@ from task import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.helloworld),
-    path('registro/',views.registro),
+    path('',views.index),
+    path('registro/',views.registro,name='registro'),
+    path('home/',views.home,name='home'),
+    path('recibir_datos/', views.recibir_datos, name='recibir_datos'),
 ]

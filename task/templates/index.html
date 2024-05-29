@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -109,28 +109,26 @@ input[type="submit"] {
 </style>
 <body>
     <div class="formulario">
-      <h1>Inicio de sesion </h1>
+      <h1>Inicio de sesión</h1>
       <form method="post">
+        {% csrf_token %}
         <div class="username">
           <input type="text" required>
-          <label>Nombre de usuraio</label>
+          <label>Nombre de usuario</label>
         </div>
         <div class="contraseña">
           <input type="password" required>
           <label>Contraseña</label>
         </div>
         <div class="recordarr">¿Olvidaste la Contraseña?</div>
-        <input type="submit" value="iniciar">
+        <input type="submit" value="Iniciar">
         <div class="registrarse">
-          Quiero hacer el <a href="% url 'registro.html' %">Registro</a>
+          Quiero hacer el <a href="{% url 'registro' %}">Registro</a>
         </div>
-
       </form>
-
     </div> 
+    {% block content %}
+    {% endblock %}
     
 </body>
 </html>
-
-
-
